@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" path="res://assets/final/guard.svg" id="2_4ra3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(12, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
+size = Vector2(16, 18)
+
+[node name="KeDich" type="CharacterBody2D" unique_id=200958526]
+z_index = 4
+collision_layer = 8
+floor_snap_length = 10.0
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=746987182]
+position = Vector2(0, -10)
+texture = ExtResource("2_4ra3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1177335620]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_5uy6h")
+
+[node name="Danger" type="Area2D" parent="." unique_id=679262559]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Danger" unique_id=262730347]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="RayMep" type="RayCast2D" parent="." unique_id=2026869198]
+position = Vector2(-12, -6)
+target_position = Vector2(0, 24)
+collision_mask = 1
+collide_with_areas = false
+
+[node name="RayTuong" type="RayCast2D" parent="." unique_id=565511788]
+position = Vector2(0, -8)
+target_position = Vector2(-14, 0)
+collision_mask = 1
+collide_with_areas = false

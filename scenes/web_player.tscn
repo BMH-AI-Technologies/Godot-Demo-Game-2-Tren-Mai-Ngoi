@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/web_player.gd" id="1_j5tca"]
+[ext_resource type="SpriteFrames" path="res://assets/web/player_frames.tres" id="2_s77g7"]
+[ext_resource type="Texture2D" path="res://assets/web/dust.svg" id="3_xulk0"]
+[ext_resource type="AudioStream" path="res://assets/audio/jump.wav" id="4_aejop"]
+[ext_resource type="AudioStream" path="res://assets/audio/death.wav" id="5_wvv4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s77g7"]
+size = Vector2(14, 22)
+
+[sub_resource type="Gradient" id="Gradient_xulk0"]
+colors = PackedColorArray(1, 1, 1, 0.65, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_aejop"]
+colors = PackedColorArray(1, 1, 1, 0.65, 1, 1, 1, 0)
+
+[node name="NhanVat" type="CharacterBody2D" unique_id=2033843324 groups=["nguoi_choi"]]
+z_index = 5
+collision_layer = 4
+collision_mask = 3
+floor_max_angle = 0.80285144
+floor_snap_length = 10.0
+script = ExtResource("1_j5tca")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1626007567]
+texture_filter = 2
+position = Vector2(0, -12)
+sprite_frames = ExtResource("2_s77g7")
+animation = &"dung"
+autoplay = "dung"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336976076]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_s77g7")
+
+[node name="BuiNhay" type="CPUParticles2D" parent="." unique_id=1535629353]
+emitting = false
+amount = 6
+texture = ExtResource("3_xulk0")
+lifetime = 0.38
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 25.0
+initial_velocity_max = 70.0
+color_ramp = SubResource("Gradient_xulk0")
+
+[node name="BuiTiepDat" type="CPUParticles2D" parent="." unique_id=558566856]
+emitting = false
+amount = 6
+texture = ExtResource("3_xulk0")
+lifetime = 0.38
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 25.0
+initial_velocity_max = 70.0
+color_ramp = SubResource("Gradient_aejop")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1528034653]
+stream = ExtResource("4_aejop")
+volume_db = -7.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=160834287]
+stream = ExtResource("5_wvv4f")
+volume_db = -7.0

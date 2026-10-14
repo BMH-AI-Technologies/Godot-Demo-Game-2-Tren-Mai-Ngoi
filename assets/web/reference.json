@@ -1,0 +1,53 @@
+{
+  "source": "app/console/kien-thuc/game-development/godot-102/page.tsx",
+  "rows": [
+    "..............................................",
+    "..............................................",
+    "..............................................",
+    "..........................,;##................",
+    "...............####....,;#####...........###..",
+    "......####..........,;#########...............",
+    "####........####..############################",
+    "####.........................................."
+  ],
+  "width": 1104,
+  "height": 200,
+  "spawn": [
+    36,
+    144
+  ],
+  "params": {
+    "gravity": 1500,
+    "fallMultiplier": 1.45,
+    "jumpVelocity": 420,
+    "terminalVelocity": 620,
+    "coyoteTime": 0.1,
+    "jumpBuffer": 0.12,
+    "jumpCutMultiplier": 0.45,
+    "apexHangThreshold": 60,
+    "apexHangScale": 0.55,
+    "runSpeed": 165,
+    "groundAccel": 1400,
+    "groundFriction": 1900,
+    "airAccel": 900,
+    "airFriction": 380,
+    "floorMaxAngle": 46,
+    "floorSnapLength": 10,
+    "floorStopOnSlope": true
+  },
+  "palette": {
+    "sky-far": "#171E28",
+    "sky-near": "#1F2833",
+    "far": "#28323E",
+    "mid": "#333E4B",
+    "wire": "#47535F",
+    "tile": "#6B564D",
+    "tile-dark": "#4A3A34",
+    "tile-lit": "#8B7166",
+    "lantern": "#E8A33D",
+    "player": "#4FD39A",
+    "enemy": "#E27D5A",
+    "spike": "#C9556B",
+    "water": "#5AA9C9"
+  }
+}

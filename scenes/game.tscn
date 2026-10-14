@@ -1,0 +1,189 @@
+[gd_scene format=4 uid="uid://8bn467b4lcc7"]
+
+[ext_resource type="Script" uid="uid://b01uqyshm5s" path="res://scripts/web_game.gd" id="1_kvuet"]
+[ext_resource type="Texture2D" uid="uid://df1v61e1mkapd" path="res://assets/web/sky.svg" id="2_trtic"]
+[ext_resource type="Texture2D" uid="uid://cf373a0rklhma" path="res://assets/web/city-far.svg" id="3_ir15t"]
+[ext_resource type="Texture2D" uid="uid://cmakcxjh263sc" path="res://assets/web/city-mid.svg" id="4_ca42v"]
+[ext_resource type="TileSet" uid="uid://01yk2lvfe03" path="res://assets/web/roof_tiles.tres" id="5_rysoc"]
+[ext_resource type="Script" uid="uid://bb4ar40v0sqb4" path="res://scripts/rain.gd" id="6_ssvqc"]
+[ext_resource type="PackedScene" path="res://scenes/lantern.tscn" id="7_264po"]
+[ext_resource type="PackedScene" uid="uid://dcqwn27ceqbqu" path="res://scenes/web_player.tscn" id="8_1kice"]
+[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="10_37s47"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="12_e1j6l"]
+[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="20_checkpoint"]
+
+[node name="Game" type="Node2D" unique_id=116285853]
+script = ExtResource("1_kvuet")
+
+[node name="BauTroi" type="Sprite2D" parent="." unique_id=1155250034]
+z_index = -30
+texture_filter = 2
+scale = Vector2(1.8695652, 1)
+texture = ExtResource("2_trtic")
+centered = false
+
+[node name="ThanhPhoXa" type="Parallax2D" parent="." unique_id=560509460]
+z_index = -20
+scroll_scale = Vector2(0.15, 1)
+
+[node name="Skyline" type="Sprite2D" parent="ThanhPhoXa" unique_id=1840044408]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(-512, 0)
+texture = ExtResource("3_ir15t")
+centered = false
+region_enabled = true
+region_rect = Rect2(-512, 0, 5120, 512)
+
+[node name="ThanhPhoGan" type="Parallax2D" parent="." unique_id=1625609724]
+z_index = -10
+scroll_scale = Vector2(0.38, 1)
+
+[node name="Skyline" type="Sprite2D" parent="ThanhPhoGan" unique_id=841270711]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(-512, 0)
+texture = ExtResource("4_ca42v")
+centered = false
+region_enabled = true
+region_rect = Rect2(-512, 0, 5120, 512)
+
+[node name="VaCham" type="TileMapLayer" parent="." unique_id=1955961819]
+texture_filter = 2
+tile_map_data = PackedByteArray("AAAaAAMAAAABAAAAAAAbAAMAAAACAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAAXAAQAAAABAAAAAAAYAAQAAAACAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAdAAQAAAAAAAAAAAApAAQAAAAAAAAAAAAqAAQAAAAAAAAAAAArAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAUAAUAAAABAAAAAAAVAAUAAAACAAAAAAAWAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAYAAUAAAAAAAAAAAAZAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAAAAAAAAAdAAUAAAAAAAAAAAAeAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAAAAAAAAAAbAAYAAAAAAAAAAAAcAAYAAAAAAAAAAAAdAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAAAAAAAAAAgAAYAAAAAAAAAAAAhAAYAAAAAAAAAAAAiAAYAAAAAAAAAAAAjAAYAAAAAAAAAAAAkAAYAAAAAAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAoAAYAAAAAAAAAAAApAAYAAAAAAAAAAAAqAAYAAAAAAAAAAAArAAYAAAAAAAAAAAAsAAYAAAAAAAAAAAAtAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAuAAYAAAAAAAAAAAAuAAcAAAAAAAAAAAAvAAYAAAAAAAAAAAAvAAcAAAAAAAAAAAAwAAYAAAAAAAAAAAAwAAcAAAAAAAAAAAAxAAYAAAAAAAAAAAAxAAcAAAAAAAAAAAA0AAYAAAAAAAAAAAA0AAcAAAAAAAAAAAA1AAYAAAAAAAAAAAA1AAcAAAAAAAAAAAA2AAYAAAAAAAAAAAA2AAcAAAAAAAAAAAA3AAYAAAAAAAAAAAA3AAcAAAAAAAAAAAA4AAYAAAAAAAAAAAA4AAcAAAAAAAAAAAA5AAYAAAAAAAAAAAA5AAcAAAAAAAAAAAA6AAYAAAAAAAAAAAA6AAcAAAAAAAAAAAA7AAYAAAAAAAAAAAA7AAcAAAAAAAAAAAA8AAYAAAAAAAAAAAA8AAcAAAAAAAAAAAA9AAYAAAAAAAAAAAA9AAcAAAAAAAAAAAA+AAYAAAAAAAAAAAA+AAcAAAAAAAAAAABBAAYAAAAAAAAAAABBAAcAAAAAAAAAAABCAAYAAAAAAAAAAABCAAcAAAAAAAAAAABDAAYAAAAAAAAAAABDAAcAAAAAAAAAAABEAAYAAAAAAAAAAABEAAcAAAAAAAAAAABFAAYAAAAAAAAAAABFAAcAAAAAAAAAAABGAAYAAAAAAAAAAABGAAcAAAAAAAAAAABHAAYAAAAAAAAAAABHAAcAAAAAAAAAAABIAAYAAAAAAAAAAABIAAcAAAAAAAAAAABJAAYAAAAAAAAAAABJAAcAAAAAAAAAAABKAAYAAAAAAAAAAABKAAcAAAAAAAAAAABLAAYAAAAAAAAAAABLAAcAAAAAAAAAAABMAAYAAAAAAAAAAABMAAcAAAAAAAAAAABPAAYAAAAAAAAAAABPAAcAAAAAAAAAAABQAAYAAAAAAAAAAABQAAcAAAAAAAAAAABRAAYAAAAAAAAAAABRAAcAAAAAAAAAAABSAAYAAAAAAAAAAABSAAcAAAAAAAAAAABTAAYAAAAAAAAAAABTAAcAAAAAAAAAAABUAAYAAAAAAAAAAABUAAcAAAAAAAAAAABVAAYAAAAAAAAAAABVAAcAAAAAAAAAAAA2AAUAAAABAAAAAAA3AAUAAAACAAAAAAA4AAQAAAABAAAAAAA4AAUAAAAAAAAAAAA5AAQAAAACAAAAAAA5AAUAAAAAAAAAAAA6AAQAAAAAAAAAAAA6AAUAAAAAAAAAAAA7AAQAAAAAAAAAAAA7AAUAAAAAAAAAAAA8AAQAAAAAAAAAAAA8AAUAAAAAAAAAAAA9AAQAAAAAAAAAAAA9AAUAAAAAAAAAAABBAAUAAAAAAAAAAABCAAUAAAAAAAAAAABDAAUAAAAAAAAAAABEAAUAAAAAAAAAAAA=")
+tile_set = ExtResource("5_rysoc")
+
+[node name="VetChuyenDong" type="Line2D" parent="." unique_id=320227383]
+z_index = 2
+width = 1.5
+default_color = Color(0.3098, 0.82745, 0.60392, 0.28)
+antialiased = true
+
+[node name="Mua" type="Node2D" parent="." unique_id=1286749299]
+z_index = 20
+script = ExtResource("6_ssvqc")
+count = 180
+area = Vector2(2064, 220)
+
+[node name="DenLong" type="Node2D" parent="." unique_id=666013486]
+
+[node name="DenTrai" parent="DenLong" unique_id=1144583846 instance=ExtResource("7_264po")]
+position = Vector2(348, 76)
+
+[node name="DenPhai" parent="DenLong" unique_id=866370836 instance=ExtResource("7_264po")]
+position = Vector2(780, 94)
+
+[node name="Den1344" parent="DenLong" unique_id=1702620965 instance=ExtResource("7_264po")]
+position = Vector2(1344, 70)
+
+[node name="Den1800" parent="DenLong" unique_id=166478389 instance=ExtResource("7_264po")]
+position = Vector2(1800, 70)
+
+[node name="NhanVat" parent="." unique_id=2033843324 instance=ExtResource("8_1kice")]
+position = Vector2(36, 144)
+
+[node name="Camera2D" type="Camera2D" parent="NhanVat" unique_id=505345200]
+position = Vector2(5, -39)
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = -100
+limit_right = 2064
+limit_bottom = 220
+position_smoothing_enabled = true
+
+[node name="Coins" type="Node2D" parent="." unique_id=1113336007]
+
+[node name="Xu02" parent="Coins" unique_id=1987740765 instance=ExtResource("10_37s47")]
+position = Vector2(60, 122)
+
+[node name="Xu08" parent="Coins" unique_id=71620884 instance=ExtResource("10_37s47")]
+position = Vector2(204, 98)
+
+[node name="Xu16" parent="Coins" unique_id=1205989699 instance=ExtResource("10_37s47")]
+position = Vector2(396, 74)
+
+[node name="Xu26" parent="Coins" unique_id=883335046 instance=ExtResource("10_37s47")]
+position = Vector2(636, 68)
+
+[node name="Xu34" parent="Coins" unique_id=643452336 instance=ExtResource("10_37s47")]
+position = Vector2(828, 122)
+
+[node name="Xu44" parent="Coins" unique_id=470602144 instance=ExtResource("10_37s47")]
+position = Vector2(1068, 122)
+
+[node name="Xu52" parent="Coins" unique_id=466881797 instance=ExtResource("10_37s47")]
+position = Vector2(1260, 122)
+
+[node name="Xu60" parent="Coins" unique_id=548082325 instance=ExtResource("10_37s47")]
+position = Vector2(1452, 74)
+
+[node name="Xu72" parent="Coins" unique_id=1226898220 instance=ExtResource("10_37s47")]
+position = Vector2(1740, 122)
+
+[node name="Xu84" parent="Coins" unique_id=1974975027 instance=ExtResource("10_37s47")]
+position = Vector2(2028, 122)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=157926888]
+
+[node name="CanhMai414" parent="Enemies" unique_id=200958526 instance=ExtResource("12_e1j6l")]
+position = Vector2(408, 96)
+patrol_radius = 48.0
+
+[node name="CanhMai744" parent="Enemies" unique_id=436749546 instance=ExtResource("12_e1j6l")]
+position = Vector2(852, 144)
+
+[node name="CanhMai984" parent="Enemies" unique_id=226684227 instance=ExtResource("12_e1j6l")]
+position = Vector2(1116, 144)
+patrol_radius = 72.0
+
+[node name="CanhMai1392" parent="Enemies" unique_id=1656530429 instance=ExtResource("12_e1j6l")]
+position = Vector2(1392, 96)
+patrol_radius = 120.0
+
+[node name="CanhMai1656" parent="Enemies" unique_id=1245461044 instance=ExtResource("12_e1j6l")]
+position = Vector2(1752, 144)
+patrol_radius = 84.0
+
+[node name="CanhMai1968" parent="Enemies" unique_id=1516503233 instance=ExtResource("12_e1j6l")]
+position = Vector2(1980, 144)
+patrol_radius = 72.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=879807938]
+
+[node name="Score" type="Label" parent="HUD" unique_id=1004447022]
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.025
+anchor_right = 0.025
+anchor_bottom = 0.025
+offset_right = 27.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.972549, 0.85490197, 0.50980395, 1)
+theme_override_font_sizes/font_size = 16
+text = "XU:"
+
+[node name="Hint" type="Label" parent="HUD" unique_id=1871551450]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.025
+anchor_right = 0.5
+anchor_bottom = 0.05
+offset_left = -154.0
+offset_right = 154.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "A/D ←→: chạy   Space ↑: nhảy   R: chơi lại"
+
+[node name="MaiCuoi" type="Label" parent="." unique_id=1298900511]
+modulate = Color(0.6627451, 0.90588236, 0.80784315, 1)
+offset_left = 1960.0
+offset_top = 93.0
+offset_right = 1960.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 10
+text = "KET THUC
+R: chơi lại"
+
+[node name="Checkpoint" parent="." unique_id=130073116 instance=ExtResource("20_checkpoint")]
+position = Vector2(1008, 96)
